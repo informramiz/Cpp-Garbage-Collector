@@ -32,6 +32,7 @@ array, then arraySize contains its size */
 template <class T>
 bool operator==(const PtrDetails<T> &ob1,
                 const PtrDetails<T> &ob2)
-{
-    // TODO: Implement operator==
+{   
+    //COMPLETED: Implement operator==
+    return ob1.memPtr = ob2.memPtr && ob1.refcount == ob2.refcount && ob1.isArray == ob2.isArray && ob1.arraySize == ob2.isArray;
 }
