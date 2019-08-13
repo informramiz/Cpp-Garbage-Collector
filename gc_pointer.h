@@ -169,9 +169,20 @@ T *Pointer<T, size>::operator=(T *t){
 template <class T, int size>
 Pointer<T, size> &Pointer<T, size>::operator=(Pointer &rv){
 
-    // TODO: Implement operator==
+    // COMPLETED: Implement operator=
     // LAB: Smart Pointer Project Lab
 
+    //Because (this) pointer is currently pointing to some address `addr` 
+    //and because now `this` pointer is going to point to new address so
+    //decrement refcount for `this->addr`
+    typename std::list<PtrDetails<T> >::iterator ptrInfo = findPtrInfo(this->addr);
+    ptrInfo->refcount--;
+
+    //now because `this` is going to point to an existing Pointer `rv` 
+    //so increment the refcount for that existing PtrDetails inside the collection
+    typename std::list<PtrDetails<T> >::iterator rvPtrInfo = findPtrInfo(rv.addr);
+    this->addr = rvPtrInfo->addr;
+    rvPtrInfo->refcount++;
 }
 
 // A utility function that displays refContainer.
