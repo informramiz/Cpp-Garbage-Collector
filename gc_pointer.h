@@ -118,9 +118,13 @@ Pointer<T,size>::Pointer(T *t){
 template< class T, int size>
 Pointer<T,size>::Pointer(const Pointer &ob){
 
-    // TODO: Implement Pointer constructor
+    // COMPLETED: Implement Pointer constructor
     // Lab: Smart Pointer Project Lab
-
+    typename std::list<PtrDetails<T> >::iterator ptrInfoIterator = findPtrInfo(ob.addr);
+    this->addr = ptrInfoIterator->memPtr;
+    this->arraySize = ptrInfoIterator->arraySize;
+    this->isArray = ptrInfoIterator->isArray;
+    ptrInfoIterator->refcount++;
 }
 
 // Destructor for Pointer.
@@ -183,8 +187,7 @@ void Pointer<T, size>::showlist(){
 }
 // Find a pointer in refContainer.
 template <class T, int size>
-typename std::list<PtrDetails<T> >::iterator
-Pointer<T, size>::findPtrInfo(T *ptr){
+typename std::list<PtrDetails<T> >::iterator Pointer<T, size>::findPtrInfo(T *ptr){
     typename std::list<PtrDetails<T> >::iterator p;
     // Find ptr in refContainer.
     for (p = refContainer.begin(); p != refContainer.end(); p++)
