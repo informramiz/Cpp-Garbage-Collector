@@ -18,9 +18,13 @@ array, then arraySize contains its size */
     // If this is an array, then size specifies
     // the size of the array.
 
-    PtrDetails(void)
+    PtrDetails(T* memAddress, unsigned arraySize = 0)
     {
-        // TODO: Implement PtrDetails
+        // COMPLETED: Implement PtrDetails
+        this->refcount = 1;
+        this->memPtr = memAddress;
+        this->arraySize = arraySize;
+        this->isArray = arraySize > 0;
     }
 };
 // Overloading operator== allows two class objects to be compared.
