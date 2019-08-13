@@ -106,9 +106,13 @@ Pointer<T,size>::Pointer(T *t){
         atexit(shutdown);
     first = false;
 
-    // TODO: Implement Pointer constructor
+    // COMPLETED: Implement Pointer constructor
     // Lab: Smart Pointer Project Lab
-
+    addr = t;
+    isArray = false;
+    arraySize = 0;
+    PtrDetails<T> myPointer(t);
+    refContainer.push_back(myPointer);
 }
 // Copy constructor.
 template< class T, int size>

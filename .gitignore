@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+gc_pointer
+main.dSYM/Contents/Resources/DWARF/main
+main
+main
+main.dSYM/Contents/Resources/DWARF/main
