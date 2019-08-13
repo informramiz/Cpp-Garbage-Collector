@@ -120,10 +120,13 @@ Pointer<T,size>::Pointer(const Pointer &ob){
 
     // COMPLETED: Implement Pointer constructor
     // Lab: Smart Pointer Project Lab
+    //get the memory address of the all Pointers list to get info
     typename std::list<PtrDetails<T> >::iterator ptrInfoIterator = findPtrInfo(ob.addr);
+    //assign the address and other values to current Pointer address
     this->addr = ptrInfoIterator->memPtr;
     this->arraySize = ptrInfoIterator->arraySize;
     this->isArray = ptrInfoIterator->isArray;
+    //since now a new Pointer is also pointing to `ptrInfoIterator->memPtr` so increment its ref count
     ptrInfoIterator->refcount++;
 }
 
