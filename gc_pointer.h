@@ -133,9 +133,9 @@ Pointer<T,size>::Pointer(const Pointer &ob){
 // Destructor for Pointer.
 template <class T, int size>
 Pointer<T, size>::~Pointer(){
-    
     // TODO: Implement Pointer destructor
     // Lab: New and Delete Project Lab
+    collect();
 }
 
 // Collect garbage. Returns true if at least
@@ -146,7 +146,18 @@ bool Pointer<T, size>::collect(){
     // TODO: Implement collect function
     // LAB: New and Delete Project Lab
     // Note: collect() will be called in the destructor
-    return false;
+    bool isMemoryFreed = false;
+    for (auto itr = refContainer.begin(); itr != refContainer.end(); itr++) {
+        if (itr->refcount > 0) continue;
+
+        isMemoryFreed = true;
+        if (itr->isArray) {
+            delete[] itr->memPtr;
+        } else {
+            delete itr->memPtr;
+        }
+    }
+    return isMemoryFreed;
 }
 
 // Overload assignment of pointer to Pointer.
