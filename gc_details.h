@@ -34,5 +34,5 @@ bool operator==(const PtrDetails<T> &ob1,
                 const PtrDetails<T> &ob2)
 {   
     //COMPLETED: Implement operator==
-    return ob1.memPtr = ob2.memPtr && ob1.refcount == ob2.refcount && ob1.isArray == ob2.isArray && ob1.arraySize == ob2.isArray;
+    return ob1.memPtr == ob2.memPtr;
 }
