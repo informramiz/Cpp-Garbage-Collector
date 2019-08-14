@@ -147,15 +147,20 @@ bool Pointer<T, size>::collect(){
     // LAB: New and Delete Project Lab
     // Note: collect() will be called in the destructor
     bool isMemoryFreed = false;
-    for (auto itr = refContainer.begin(); itr != refContainer.end(); itr++) {
+    for (typename std::list<PtrDetails<T> >::iterator itr = refContainer.begin(); itr != refContainer.end(); itr++) {
         if (itr->refcount > 0) continue;
 
         isMemoryFreed = true;
+        itr->refcount = 0;
+        if (itr->memPtr == NULL) continue;
+
         if (itr->isArray) {
             delete[] itr->memPtr;
         } else {
             delete itr->memPtr;
         }
+        itr->memPtr = NULL;
+        refContainer.remove(*itr);
     }
     return isMemoryFreed;
 }
