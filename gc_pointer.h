@@ -160,7 +160,7 @@ bool Pointer<T, size>::collect(){
             delete itr->memPtr;
         }
         itr->memPtr = NULL;
-        refContainer.remove(*itr);
+        refContainer.erase(itr);
     }
     return isMemoryFreed;
 }
