@@ -133,7 +133,7 @@ Pointer<T,size>::Pointer(const Pointer &ob){
 // Destructor for Pointer.
 template <class T, int size>
 Pointer<T, size>::~Pointer(){
-    // TODO: Implement Pointer destructor
+    // COMPLETED: Implement Pointer destructor
     // Lab: New and Delete Project Lab
     collect();
 }
@@ -143,7 +143,7 @@ Pointer<T, size>::~Pointer(){
 template <class T, int size>
 bool Pointer<T, size>::collect(){
 
-    // TODO: Implement collect function
+    // COMPLETED: Implement collect function
     // LAB: New and Delete Project Lab
     // Note: collect() will be called in the destructor
     bool isMemoryFreed = false;
